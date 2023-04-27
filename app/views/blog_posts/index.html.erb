@@ -1,5 +1,4 @@
-
-<div class='bg-slate-100 shadow-lg rounded-lg p-4 max-w-3xl mx-auto divide-y-2 space-y-4'>
+<div class='bg-slate-100 shadow-lg rounded-lg p-4 max-w-3xl mx-auto divide-y-2 space-y-4 '>
   <% @blog_posts.each do |blog_post|%>
     <div>
       <h2 class='font-semibold text-indigo-700 mt-2'><%= link_to blog_post.title , blog_post_path(blog_post.id)%></h2>

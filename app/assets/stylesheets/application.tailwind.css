@@ -20,6 +20,10 @@
 	}
 
 	.submitButton {
-		@apply text-white bg-indigo-600 rounded-md shadow-md py-2 px-3 text-center hover:bg-indigo-800;
+		@apply text-white bg-green-600 rounded-md shadow-md py-2 px-3 text-center hover:bg-green-800;
+	}
+
+	.deleteButton {
+		@apply text-white bg-red-600 rounded-md shadow-md py-2 px-3 text-center hover:bg-red-800;
 	}
 }

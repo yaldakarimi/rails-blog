@@ -7,20 +7,6 @@
   <%# local: true option specifies that the form should be submitted using AJAX, which is optional. %>
   <%# No, the :title symbol used in form.text_field :title and form.label :title is used to identify the attribute of the form's associated model that the field is for and label is referring to. It does not automatically fill in the value of the input. However, if the model instance @blog_post has a value for the title attribute, it will be shown as the value of the input field by default. %>
   <div class="p-4">
-    <%= form_with model:@blog_post , local:true do |form|%>
-      <div class="mb-4">
-        <%= form.label :title, class:"formLabel"%>
-        <%= form.text_field :title , placeholder:"Blog post title", class: form.object.errors.has_key?(:title) ? 'formInput border-red-500' : 'formInput'%>
-        <p class="text-red-500 text-xs italic" id="titleError"><%= form.object.errors[:title].first %></p>
-      </div>
-      <div>
-        <%= form.label :body, class:"formLabel" %>
-        <%= form.text_area :body, placeholder:"Blog post content", class: form.object.errors.has_key?(:body) ? 'formInput border-red-500' : 'formInput' %>
-        <p class="text-red-500 text-xs italic" id="bodyError"><%= form.object.errors[:body].first %></p>
-      </div>
-      <div class="mt-4">
-        <%= form.button "Add Post" , class: "submitButton"%>
-      </div>
-    <%end%>
+    <%= render partial: 'form', locals: { blog_post: @blog_post } %>
   </div>
 </div>
