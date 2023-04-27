@@ -1,0 +1,26 @@
+<div class="container mx-auto card">
+  <h1 class="heading text-center mb-4">Add a new blog post here!</h1>
+  <%# This code creates a form using the form_with helper method that will be associated with an instance of the BlogPost model (@blog_post instance variable). %>
+  <%# The form_with method takes a model option which specifies the object (in this case @blog_post) that the form should be associated with. The form variable inside the block can be used to generate form input fields for the model attributes. %>
+  <%# The form will be submitted to the controller's create action by default, as it was not specified in the form_with method. %>
+  <%# The controller's action that the form will be submitted to can be specified by passing the url or action options to the form_with method. For example, if you want to submit the form to a different controller action than the default one, you can specify it like this: %>
+  <%# local: true option specifies that the form should be submitted using AJAX, which is optional. %>
+  <%# No, the :title symbol used in form.text_field :title and form.label :title is used to identify the attribute of the form's associated model that the field is for and label is referring to. It does not automatically fill in the value of the input. However, if the model instance @blog_post has a value for the title attribute, it will be shown as the value of the input field by default. %>
+  <div class="p-4">
+    <%= form_with model:@blog_post , local:true do |form|%>
+      <div class="mb-4">
+        <%= form.label :title, class:"formLabel"%>
+        <%= form.text_field :title , placeholder:"Blog post title", class: form.object.errors.has_key?(:title) ? 'formInput border-red-500' : 'formInput'%>
+        <p class="text-red-500 text-xs italic" id="titleError"><%= form.object.errors[:title].first %></p>
+      </div>
+      <div>
+        <%= form.label :body, class:"formLabel" %>
+        <%= form.text_area :body, placeholder:"Blog post content", class: form.object.errors.has_key?(:body) ? 'formInput border-red-500' : 'formInput' %>
+        <p class="text-red-500 text-xs italic" id="bodyError"><%= form.object.errors[:body].first %></p>
+      </div>
+      <div class="mt-4">
+        <%= form.button "Add Post" , class: "submitButton"%>
+      </div>
+    <%end%>
+  </div>
+</div>

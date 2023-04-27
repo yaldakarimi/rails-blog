@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.card {
+		@apply overflow-hidden shadow-lg bg-slate-100 rounded-lg p-8;
+	}
+
+	.heading {
+		@apply text-2xl text-gray-800 font-semibold;
+	}
+
+	.formLabel {
+		@apply block text-gray-700 text-sm font-bold mb-2;
+	}
+
+	.formInput {
+		@apply appearance-none border-gray-200 rounded shadow w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none;
+	}
+
+	.submitButton {
+		@apply text-white bg-indigo-600 rounded-md shadow-md py-2 px-3 text-center hover:bg-indigo-800;
+	}
+}
