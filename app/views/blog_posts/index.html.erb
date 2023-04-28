@@ -1,10 +1,15 @@
-<div class='bg-slate-100 shadow-lg rounded-lg p-4 max-w-3xl mx-auto divide-y-2 space-y-4 '>
-  <% @blog_posts.each do |blog_post|%>
+<div class='bg-slate-100 shadow-lg rounded-lg p-4 max-w-3xl mx-auto'>
+  <div>
+    <% @blog_posts.each do |blog_post|%>
+      <div class=' divide-y-2 space-y-4 '>
+        <h2 class='font-semibold text-indigo-700 mt-2'><%= link_to blog_post.title , blog_post_path(blog_post.id)%></h2>
+        <p class ='text-base text-gray-800'><%= blog_post.body%></p>
+      </div>
+    <%end%>
     <div>
-      <h2 class='font-semibold text-indigo-700 mt-2'><%= link_to blog_post.title , blog_post_path(blog_post.id)%></h2>
-      <p class ='text-base text-gray-800'><%= blog_post.body%></p>
+      <%= link_to "Create a new blog" ,new_blog_post_path ,class:"createButton block max-w-fit mt-4"%>
     </div>
-  <%end%>
+  </div>
 </div>
 <%# These two would also word because now blog_post is an activeRecord object and rails would know how to retrieve path and id from it!!!!! %>
 <%# <h2 class='font-semibold text-indigo-700 mt-2'><%= link_to blog_post.title , blog_post_path</h2>%>

@@ -26,4 +26,12 @@
 	.deleteButton {
 		@apply text-white bg-red-600 rounded-md shadow-md py-2 px-3 text-center hover:bg-red-800;
 	}
+
+	.editButton {
+		@apply text-white bg-amber-500 rounded-md shadow-md py-2 px-3 text-center hover:bg-amber-600;
+	}
+
+	.createButton {
+		@apply text-white bg-lime-500 rounded-md shadow-md py-2 px-3 text-center hover:bg-lime-600;
+	}
 }
