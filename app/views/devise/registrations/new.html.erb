@@ -1,0 +1,31 @@
+<div class='authenticationFormWrapper'>
+  <div class='border-b border-gray-100 mb-4'>
+    <h2 class='mb-2 text-lg font-semibold'>Sign up</h2>
+  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.label :email,class:"formLabel"  %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "formInput mb-4 #{'border-red-500' if f.object.errors.has_key?(:email)}" %>
+      <p class="errorMessage"><%= f.object.errors[:email].first %></p>
+    </div>
+    <div class="field">
+      <div class='flex'>
+        <%= f.label :password,class:"formLabel"  %>
+        <% if @minimum_password_length %>
+          <em class='text-gray-400 text-sm ml-2'>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+      </div>
+      <%= f.password_field :password, autocomplete: "new-password", class: "formInput mb-4 #{'border-red-500' if f.object.errors.has_key?(:password)}" %>
+      <p class="errorMessage"><%= f.object.errors[:password].first %></p>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation, class:"formLabel" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "formInput #{'border-red-500' if f.object.errors.has_key?(:password_confirmation)}" %>
+      <p class="errorMessage"><%= f.object.errors[:password_confirmation].first %></p>
+    </div>
+    <div class="actions">
+      <%= f.submit "Sign up", class:"primaryButton mt-4" %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>

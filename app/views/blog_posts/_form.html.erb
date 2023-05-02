@@ -3,21 +3,21 @@
     <%= form.label :title, class:"formLabel" %>
     <%= form.text_field :title, placeholder:"Blog post title", class: "formInput #{'border-red-500' if form.object.errors.has_key?(:title)}" %>
     <% if form.object.errors.has_key?(:title) %>
-      <p class="text-red-500 text-xs italic"><%= form.object.errors[:title].first %></p>
+      <p class="errorMessage"><%= form.object.errors[:title].first %></p>
     <% end %>
   </div>
   <div>
     <%= form.label :body, class:"formLabel" %>
     <%= form.text_area :body,size: "70x5", placeholder:"Blog post content", class: "formInput #{'border-red-500' if form.object.errors.has_key?(:body)}" %>
     <% if form.object.errors.has_key?(:body) %>
-      <p class="text-red-500 text-xs italic"><%= form.object.errors[:body].first %></p>
+      <p class="errorMessage"><%= form.object.errors[:body].first %></p>
     <% end %>
   </div>
-  <div class="mt-4">
+  <div class="mt-4 flex">
     <% if form.object.new_record? %>
-      <%= form.button "Create Post", class: "submitButton" %>
+      <%= form.submit "Create Post", class: "submitButton" %>
     <% else %>
-      <%= form.button "Update Post", class: "submitButton" %>
+      <%= form.submit "Update Post", class: "submitButton" %>
     <% end %>
   </div>
 <% end %>
