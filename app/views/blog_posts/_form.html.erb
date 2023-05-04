@@ -6,7 +6,7 @@
       <p class="errorMessage"><%= form.object.errors[:title].first %></p>
     <% end %>
   </div>
-  <div>
+  <div class="mb-4">
     <%= form.label :body, class:"formLabel" %>
     <%= form.text_area :body,size: "70x5", placeholder:"Blog post content", class: "formInput #{'border-red-500' if form.object.errors.has_key?(:body)}" %>
     <% if form.object.errors.has_key?(:body) %>
@@ -15,7 +15,7 @@
   </div>
   <div>
     <%= form.label :published_at, class:"formLabel" %>
-    <%= form.datetime_select :published_at, include_blank:true ,class: "formInput " %>
+    <%= form.datetime_select :published_at, include_blank:true  %>
   </div>
   <div class="mt-4 flex">
     <% if form.object.new_record? %>

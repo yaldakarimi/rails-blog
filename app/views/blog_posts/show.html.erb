@@ -12,5 +12,8 @@
     </div>
     <p><%= @blog_post.body%></p>
   </div>
-  <%= link_to 'Edit blog' , edit_blog_post_path(@blog_post) , class:"editButton mt-4 block max-w-fit"%>
+  <div class='flex items-center mt-4 '>
+    <%= link_to 'Edit blog' , edit_blog_post_path(@blog_post) , class:"editButton max-w-fit"%>
+    <%= button_to "Delete Post", blog_post_path(@blog_post.id), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "deleteButton ml-2" %>
+  </div>
 </div>
