@@ -66,4 +66,8 @@
 	.link {
 		@apply text-blue-500 font-semibold text-base;
 	}
+
+	.badge {
+		@apply px-2 py-1 text-xs font-semibold rounded-full ml-2;
+	}
 }

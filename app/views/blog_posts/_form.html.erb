@@ -13,11 +13,15 @@
       <p class="errorMessage"><%= form.object.errors[:body].first %></p>
     <% end %>
   </div>
+  <div>
+    <%= form.label :published_at, class:"formLabel" %>
+    <%= form.datetime_select :published_at, include_blank:true ,class: "formInput " %>
+  </div>
   <div class="mt-4 flex">
     <% if form.object.new_record? %>
-      <%= form.submit "Create Post", class: "submitButton" %>
+      <%= form.button "Create Post", class: "submitButton" %>
     <% else %>
-      <%= form.submit "Update Post", class: "submitButton" %>
+      <%= form.button "Update Post", class: "submitButton" %>
     <% end %>
   </div>
 <% end %>

@@ -1,14 +1,19 @@
 class BlogPostsController < ApplicationController
     before_action :authenticate_user! , except:[:show, :index]
     before_action :set_blog_post, except:[:index , :new, :create]
+
+    # Yes, you can remove the .all from BlogPost.sorted.all. By default, when you call a scope in Rails, it returns an ActiveRecord::Relation object, which is lazy loaded. This means that the actual SQL query is only executed when you try to access the results of the relation, such as when you call methods like each, count, or to_a.
+
+    # Therefore, adding .all to the end of the scope chain is redundant in this case, as it does not change the behavior of the query. You can safely remove it and the code will still work correctly:
     def index
-        @blog_posts = BlogPost.all
+        #  @blog_posts = user_signed_in? ? BlogPost.sorted.all : BlogPost.sorted.published
+        @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.sorted.published
     end
 
     def show
         # @blog_post = BlogPost.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-        redirect_to root_path
+    # rescue ActiveRecord::RecordNotFound
+    #     redirect_to root_path
     end
 
     def new
@@ -51,11 +56,12 @@ class BlogPostsController < ApplicationController
 
     private 
     def blog_post_params
-        params.require(:blog_post).permit(:title, :body)
+        params.require(:blog_post).permit(:title, :body, :published_at)
     end
 
     def set_blog_post
-        @blog_post = BlogPost.find(params[:id])
+        @blog_post  =  user_signed_in? ? BlogPost.find(params[:id]) :BlogPost.published.find(params[:id])
+        
     rescue ActiveRecord::RecordNotFound
         redirect_to root_path
     end

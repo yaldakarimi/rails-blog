@@ -1,5 +1,16 @@
 <div class='card my-8 max-w-3xl mx-auto'>
-  <h1 class="font-semibold text-2xl text-gray-900"><%= @blog_post.title%></h1>
-  <p><%= @blog_post.body%></p>
+  <div>
+    <div>
+      <h1 class="font-semibold text-2xl text-gray-900 inline"><%= @blog_post.title%></h1>
+      <% if @blog_post.draft? %>
+        <span class="badge text-red-600 bg-red-200">Draft</span>
+      <% elsif @blog_post.scheduled? %>
+        <span class="badge text-yellow-600 bg-yellow-200">Scheduled</span>
+      <% else %>
+        <span class="badge text-green-600  bg-green-200 ">Published</span>
+      <% end %>
+    </div>
+    <p><%= @blog_post.body%></p>
+  </div>
   <%= link_to 'Edit blog' , edit_blog_post_path(@blog_post) , class:"editButton mt-4 block max-w-fit"%>
 </div>

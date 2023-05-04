@@ -2,7 +2,16 @@
   <div>
     <% @blog_posts.each_with_index do |blog_post,index|%>
       <div class="pb-4 border-b-2 <%= 'border-none' if index == @blog_posts.length - 1 %>">
-        <h2 class='font-semibold text-indigo-700 mt-2'><%= link_to blog_post.title , blog_post_path(blog_post.id)%></h2>
+        <div class='mt-2'>
+          <h2 class='font-semibold text-indigo-700 mt-2 inline'><%= link_to blog_post.title , blog_post_path(blog_post.id)%></h2>
+          <% if blog_post.draft? %>
+            <span class="badge text-red-600 bg-red-200">Draft</span>
+          <% elsif blog_post.scheduled? %>
+            <span class="badge text-yellow-600 bg-yellow-200">Scheduled</span>
+          <% else %>
+            <span class="badge text-green-600  bg-green-200 ">Published</span>
+          <% end %>
+        </div>
         <p class ='text-base text-gray-800 mb-4'><%= blog_post.body%></p>
       </div>
     <%end%>
